@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Confirmada - NUVRA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --laranja: #D97532;
+            --azul: #0A1F44;
+            --branco: #FFFFFF;
+            --preto: #1A1A1A;
+            --cinza-claro: #F5F5F5;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--preto);
+            background: var(--branco);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: var(--azul);
+            color: var(--branco);
+            text-align: center;
+            padding: 120px 0 100px 0;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--branco);
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: var(--laranja);
+            color: var(--branco);
+            padding: 8px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 0;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--branco);
+        }
+
+        /* SEÇÕES DE CONTEÚDO */
+        .content-section {
+            background: var(--branco);
+            padding: 60px 0;
+        }
+
+        .content-section.alt {
+            background: var(--cinza-claro);
+        }
+
+        .content-card {
+            background: var(--branco);
+            border-radius: 12px;
+            padding: 48px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+
+        .content-section.alt .content-card {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--laranja);
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            color: var(--azul);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--preto);
+        }
+
+        /* LISTA COM BULLETS */
+        .lista {
+            margin: 32px 0;
+        }
+
+        .lista-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .lista-item::before {
+            content: "•";
+            color: var(--laranja);
+            font-size: 28px;
+            margin-right: 16px;
+            line-height: 1.3;
+        }
+
+        /* STEPS NUMERADOS */
+        .steps {
+            margin: 32px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            padding: 24px;
+            background: var(--cinza-claro);
+            border-radius: 8px;
+            border-left: 4px solid var(--laranja);
+        }
+
+        .step-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--laranja);
+            margin-right: 24px;
+            line-height: 1;
+            min-width: 40px;
+        }
+
+        .step-content {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--preto);
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: var(--azul);
+            color: var(--branco);
+            padding: 48px;
+            border-radius: 12px;
+            margin: 48px 0;
+            text-align: center;
+        }
+
+        .highlight-box p {
+            font-size: 24px;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--branco);
+        }
+
+        /* NOTA */
+        .nota {
+            font-size: 15px;
+            color: #666;
+            font-style: italic;
+            margin-top: 16px;
+        }
+
+        /* ASSINATURA */
+        .assinatura {
+            text-align: center;
+            padding: 60px 0;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--azul);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .content-card {
+                padding: 32px 24px;
+            }
+
+            h3 {
+                font-size: 28px;
+            }
+
+            p, .lista-item, .step-content {
+                font-size: 16px;
+            }
+
+            .highlight-box p {
+                font-size: 20px;
+            }
+
+            .highlight-box {
+                padding: 32px 24px;
+            }
+
+            .step {
+                padding: 20px;
+            }
+
+            .step-number {
+                font-size: 24px;
+                min-width: 30px;
+            }
+        }
+
+        /* ANIMAÇÃO DE ENTRADA */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-in:nth-child(1) { animation-delay: 0.1s; }
+        .animate-in:nth-child(2) { animation-delay: 0.2s; }
+        .animate-in:nth-child(3) { animation-delay: 0.3s; }
+        .animate-in:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="status-badge">✓ Compra confirmada</div>
+            <h1>Bem-vindo à NUVRA</h1>
+            <p>Você acaba de dar o primeiro passo para parar de improvisar e começar a operar com método.</p>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 1: O QUE ACONTECE AGORA -->
+    <section class="content-section animate-in">
+        <div class="container">
+            <div class="content-card">
+                <h2>O que acontece agora</h2>
+                <h3>Verifique seu email</h3>
+                <p>Obrigado por adquirir o Método NUVRA.</p>
+                <p>Você receberá um email com:</p>
+                <div class="lista">
+                    <div class="lista-item">Link de acesso ao material no Notion</div>
+                    <div class="lista-item">Instruções para duplicar os templates</div>
+                    <div class="lista-item">Orientações iniciais</div>
+                </div>
+                <p class="nota">Se não encontrar, verifique a caixa de spam.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2: PRÓXIMO PASSO -->
+    <section class="content-section alt animate-in">
+        <div class="container">
+            <div class="content-card">
+                <h2>Antes de começar</h2>
+                <h3>Faça isso primeiro (Muito Importante)</h3>
+                <p>Antes de acessar o material, siga estes passos:</p>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">Abra o Notion no computador</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">Duplique o template principal</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">Leia o módulo de introdução antes de aplicar</div>
+                    </div>
+                </div>
+                <p class="nota">Isso aumenta retenção.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: POSICIONAMENTO -->
+    <section class="content-section animate-in">
+        <div class="container">
+            <div class="content-card">
+                <h2>O que é a NUVRA</h2>
+                <div class="highlight-box">
+                    <p>A NUVRA não é sobre informação.<br>
+                    É sobre estrutura.</p>
+                    <p style="margin-top: 24px;">Se você aplicar corretamente, vai parar de improvisar e começar a operar com método.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASSINATURA -->
+    <section class="assinatura animate-in">
+        <div class="container">
+            Nos vemos dentro da estrutura.<br>
+            <span style="font-weight: 700; font-size: 24px; margin-top: 12px; display: inline-block;">— NUVRA</span>
+        </div>
+    </section>
+
+</body>
+</html>
